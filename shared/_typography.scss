@@ -1,0 +1,16 @@
+// ------------------------------
+// Paragraphs
+// ------------------------------
+
+// Large text helper. Good for intro paragraphs.
+.lead {
+  @include font-size($base-font-size * 1.25);
+}
+
+// Small text helpers. Good for footnotes.
+.milli {
+  @include font-size($milli-size);
+}
+.micro {
+  @include font-size($micro-size);
+}

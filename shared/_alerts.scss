@@ -1,0 +1,49 @@
+// ------------------------------
+// Alerts
+// ------------------------------
+
+// Alerts are used to display information snippets.
+// They are often used to show success or errors on form submissions,
+// or they can be used as general notices. They are typcially contain
+// only text.
+
+// Base alert structure
+.alert {
+  @include rem('padding', $half-spacing-unit);
+  border-radius: $radius;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+  &[class*="ss-"]:before,
+  &[class^="ss-"]:before {
+    margin-right: 0.5em;
+    vertical-align: middle;
+  }
+}
+
+// UI alert styles
+.alert {
+  @include alert(white);
+}
+.alert-interior {
+  @include alert($gray);
+}
+.alert-exterior {
+  @include alert($beige);
+}
+.alert-primary {
+  @include alert($orange);
+}
+.alert-secondary {
+  @include alert($blue);
+}
+.alert-positive {
+  @include alert($green);
+}
+.alert-negative {
+  @include alert($red);
+}
+.alert-info {
+  @include alert($yellow);
+}

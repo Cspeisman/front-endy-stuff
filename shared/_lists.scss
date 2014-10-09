@@ -1,0 +1,62 @@
+// ------------------------------
+// Lists
+// ------------------------------
+
+
+
+// Check-list style
+// ------------------------------
+// Puts a top border on each list item and helps format symbolset icons
+.check-list {
+  margin-left: 0;
+  list-style: none;
+
+  &.check-list-border-bottom {
+    border-bottom: 1px dotted tint($gray, 25%);
+    border-color: rgba($gray, 0.75);
+  }
+  li {
+    @include rem('padding-top', $half-spacing-unit);
+    @include rem('padding-bottom', $half-spacing-unit);
+    border-top: 1px dotted tint($gray, 25%);
+    border-color: rgba($gray, 0.75);
+
+    &[class*="ss-"]:before {
+      margin-right: 0.5em;
+      vertical-align: middle;
+      line-height: 0.5;
+      color: $gray;
+    }
+    &.ss-check:before {
+      color: $green;
+    }
+    &.ss-delete:before {
+      color: $red;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+}
+.check-list-slim {
+
+  li {
+    @include rem('padding-top', $base-spacing-unit*0.25);
+    @include rem('padding-bottom', $base-spacing-unit*0.25);
+    // border-top: 1px dotted tint($gray, 25%);
+    // border-color: rgba($gray, 0.75);
+
+    // &[class*="ss-"]:before {
+    //   margin-right: 0.5em;
+    //   vertical-align: middle;
+    //   line-height: 0.5;
+    //   color: $gray;
+    // }
+    // &.ss-check:before {
+    //   color: $green;
+    // }
+    // &.ss-delete:before {
+    //   color: $red;
+    // }
+  }
+}

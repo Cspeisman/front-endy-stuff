@@ -1,0 +1,138 @@
+// ------------------------------
+// Islands
+// ------------------------------
+
+// Islands are self contained elements with padding around the edge
+// and usually a contrasting background color.
+
+
+
+// Mixin for bold base colors
+// --------------------------------
+@mixin island($island-color) {
+  background-color: tint($island-color, 75%);
+
+  &.island-outline {
+    background-color: transparent;
+    border: 1px solid tint($island-color, 50%);
+
+    &.island-inherit-color {
+      color: shade($island-color, 10%);
+    }
+  }
+  &.island-inherit-color {
+    color: shade($island-color, 50%);
+
+    a {
+      color: shade($island-color, 35%);
+
+      &:hover {
+        color: shade($island-color, 60%);
+      }
+    }
+  }
+}
+
+
+
+// Mixin for light base colors
+// --------------------------------
+@mixin island-light($island-color) {
+  background-color: tint($island-color, 50%);
+
+  &.island-outline {
+    background-color: transparent;
+    border: 1px solid tint($island-color, 25%);
+
+    &.island-inherit-color {
+      color: shade($island-color, 35%);
+    }
+  }
+  &.island-inherit-color {
+    color: shade($island-color, 75%);
+
+    a {
+      color: shade($island-color, 60%);
+
+      &:hover {
+        color: shade($island-color, 85%);
+      }
+    }
+  }
+}
+
+
+
+// Base island structure
+// --------------------------------
+.island {
+  @extend %base-margin-bottom;
+  @include rem('padding', $base-spacing-unit);
+  border-radius: $radius;
+  background-color: white;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+.island-nopad {
+  padding: 0;
+}
+.island-thin {
+  @include rem('padding', $half-spacing-unit);
+}
+.island-thick {
+  @include rem('padding', $base-spacing-unit*1.5);
+
+  @include media-query(palm) {
+    @include rem('padding', $base-spacing-unit);
+  }
+}
+.island-fat {
+  @include rem('padding', $base-spacing-unit*2);
+
+  @include media-query(palm) {
+    @include rem('padding', $base-spacing-unit);
+  }
+}
+
+
+
+// Island colors adjustments
+// --------------------------------
+.island-inherit-color {
+
+  h1, h2, h3, h4, h5, h6 {
+    color: inherit;
+  }
+}
+
+
+
+// UI island styles
+// --------------------------------
+
+// Bolder colors
+.island-primary {
+  @include island($orange);
+}
+.island-secondary {
+  @include island($blue);
+}
+.island-positive {
+  @include island($green);
+}
+.island-negative {
+  @include island($red);
+}
+
+// Lighter colors
+.island-interior {
+  @include island-light($gray);
+}
+.island-exterior {
+  @include island-light($beige);
+}
+.island-info {
+  @include island-light($yellow);
+}

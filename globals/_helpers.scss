@@ -1,0 +1,292 @@
+// ------------------------------
+// Clearfix
+// ------------------------------
+
+// Clear nested floats
+// Only use this if no other suitable class exists on which you
+// can apply the Bourbon mixin @include clearfix; and if you use
+// this be sure to extend this class using Sass to avoid extra markup.
+.cf {
+  @include clearfix;
+}
+
+
+
+// ------------------------------
+// Float Helpers
+// ------------------------------
+
+// Box alignment
+.float-right {
+  float: right !important;
+}
+.float-left {
+  float: left !important;
+}
+.float-none {
+  float: none !important;
+}
+.float-center {
+  text-align: center;
+
+  > * {
+    display: inline-block;
+  }
+}
+
+// Widths
+.full-width {
+  width: 100%;
+}
+
+// ------------------------------
+// Box Model Helpers
+// ------------------------------
+
+// Margins
+.no-margin {
+  margin: 0 !important;
+}
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+.quarter-margin-bottom {
+  @include rem('margin-bottom', $base-spacing-unit/4);
+}
+.half-margin-bottom {
+  @include rem('margin-bottom', $half-spacing-unit);
+}
+.base-margin-bottom {
+  @include rem('margin-bottom', $base-spacing-unit);
+}
+
+
+
+// ------------------------------
+// Box Model Helpers
+// ------------------------------
+
+// Margins
+.no-margin {
+  margin: 0;
+}
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+.base-margin-bottom {
+  @include rem('margin-bottom', $base-spacing-unit);
+}
+.half-margin-bottom {
+  @include rem('margin-bottom', $half-spacing-unit);
+}
+
+
+
+// ------------------------------
+// Text Helpers
+// ------------------------------
+
+// Text alignment
+.text-left {
+  text-align: left !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-right {
+  text-align: right !important;
+}
+.no-underline {
+  text-decoration: none;
+}
+.no-wrap {
+  white-space: nowrap;
+}
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:hover.hover-truncated {
+    background-color: white;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+}
+
+
+
+// ------------------------------
+// Font Style Helpers
+// ------------------------------
+
+// Weights
+.weight-normal {
+  font-weight: 400;
+}
+.weight-semibold {
+  font-weight: 600;
+}
+.weight-bold {
+  font-weight: 700;
+}
+
+// Code
+.code {
+  font-family: Courier, "Courier New", monospace;
+}
+
+
+
+// ------------------------------
+// Color Helpers
+// ------------------------------
+
+// Colors for text
+.color-text {
+  color: $text-color;
+}
+.color-white {
+  color: white !important;
+}
+.color-gray {
+  color: tint($text-color, 50%) !important;
+}
+.color-beige {
+  color: $beige !important;
+}
+.color-blue {
+  color: $blue !important;
+}
+.color-orange {
+  color: $orange !important;
+}
+.color-green {
+  color: $green !important;
+}
+.color-red {
+  color: $red !important;
+}
+.color-yellow {
+  color: $yellow !important;
+}
+.color-yellow-dark {
+  color: darken($yellow, 20%) !important;
+}
+.highlight {
+  background-color: $yellow;
+}
+
+
+// ------------------------------
+// Rule Helpers
+// ------------------------------
+
+// Use with the horizontal rule element
+// e.g. <hr class="rule" />
+.rule {
+  color: $gray;
+  border: none;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  @include rem('margin-bottom', $base-spacing-unit);
+}
+.rule-dotted {
+  border-bottom-style: dotted;
+}
+.rule-dashed {
+  border-bottom-style: dashed;
+}
+.rule-double-pad {
+  @include rem('padding-top', $base-spacing-unit);
+  @include rem('margin-bottom', $base-spacing-unit*2);
+
+}
+
+
+
+// ------------------------------
+// Icon Helpers
+// ------------------------------
+
+// Align an icon to the middle of the text
+.icon-lead,
+.icon-follow {
+
+  &[class*="ss-"]:before,
+  &[class^="ss-"]:before {
+    vertical-align: middle;
+  }
+}
+.icon-lead {
+
+  &[class*="ss-"]:before,
+  &[class^="ss-"]:before {
+    margin-right: 0.5em;
+  }
+}
+.icon-follow {
+
+  &[class*="ss-"]:before,
+  &[class^="ss-"]:before {
+    margin-left: 0.5em;
+  }
+}
+
+
+
+// ------------------------------
+// Media Helpers
+// ------------------------------
+
+// Flex video
+.flex-video {
+  position: relative;
+  padding-bottom: 67.5%;
+  height: 0;
+  overflow: hidden;
+
+  &.widescreen {
+    padding-bottom: 57.25%;
+  }
+  &.vimeo {
+    padding-top: 0;
+  }
+  iframe, video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+
+// ------------------------------
+// Hide/Show
+// ------------------------------
+
+// Simple hide/show helpers.
+// Good for using with scripts.
+.hide {
+  display: none;
+}
+.show {
+  display: inherit;
+}
+
+// Responsive hide/show helpers.
+// Good for using in responsive views.
+// e.g. class="hide-palm"
+@each $state in palm, lap, lap-and-up, portable, desk, desk-wide {
+  @include media-query(#{$state}){
+    .hide-#{$state} {
+      display: none;
+    }
+    .show-#{$state} {
+      display: inherit;
+    }
+  }
+}

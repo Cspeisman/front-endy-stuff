@@ -1,0 +1,66 @@
+// ------------------------------
+// Rankings
+// ------------------------------
+
+// A style pattern to model ranking boxes
+// e.g. Refer to the Category > Top Reviews pages
+
+.rank-meta {
+  @include rem('margin-right', $base-spacing-unit);
+  text-align: center;
+
+  @include media-query(portable) {
+    margin-right: 0;
+  }
+  @include media-query(palm) {
+    @include rem('margin-bottom', $half-spacing-unit);
+  }
+}
+.rank-reviews-count {
+  @include rem('padding-top', $base-spacing-unit/4);
+  @include rem('padding-bottom', $base-spacing-unit/4);
+  border-top-right-radius: $radius;
+  border-top-left-radius: $radius;
+  line-height: 1;
+  background-color: tint($blue, 90%);
+
+  a {
+    text-decoration: none;
+
+    &:visited {
+      color: $blue;
+    }
+    &:hover {
+      color: shade($blue, 50%);
+    }
+  }
+}
+.rank-reviews-count-number {
+  font-size: 48px;
+  font-weight: 600;
+}
+.rank-placement {
+  @include rem('padding-top', $base-spacing-unit/4);
+  @include rem('padding-bottom', $base-spacing-unit/4);
+  background-color: tint($blue, 85%);
+  border-top: 1px solid tint($blue, 80%);
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+  color: tint($blue, 50%);
+  font-size: 1.25em;
+  font-weight: 600;
+}
+.rank-buttons {
+  @include rem('margin-left', $base-spacing-unit);
+
+  .button {
+    @include rem('margin-bottom', $half-spacing-unit);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  @include media-query(portable) {
+    margin-left: 0;
+  }
+}

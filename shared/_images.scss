@@ -1,0 +1,76 @@
+// ------------------------------
+// Images
+// ------------------------------
+
+// Example
+/*
+  <img src="" alt="" class="image-radius  image-right">
+*/
+
+
+
+// Base image settings
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Rounded images
+.image-radius {
+  border-radius: $radius;
+}
+.image-round {
+  border-radius: $round;
+}
+
+// Image alignment
+.image-right {
+  float:right;
+  margin-bottom: $base-spacing-unit;
+  margin-left: $base-spacing-unit;
+}
+.image-left {
+  float:left;
+  margin-right: $base-spacing-unit;
+  margin-bottom: $base-spacing-unit;
+}
+.image-center {
+  display: block;
+  margin-right: auto;
+  margin-bottom: $base-spacing-unit;
+  margin-left: auto;
+}
+
+// Non-fluid images
+img[width],
+img[height] {
+  // max-width: none;
+}
+
+// Thumbnail styling
+// Example: <a href="#" class="thumbnail"><img></a>
+.thumbnail {
+  display: block;
+  padding: 0.25em;
+  border: 1px solid tint($gray, 50%);
+  border-radius: $radius;
+  background-color: white;
+  line-height: 0;
+
+  &:hover {
+    border-color: $gray;
+    box-shadow: 0 0 0.25em tint($gray, 50%);
+  }
+}
+
+.grid-thumbnail {
+  display: block;
+  @include rem('margin-bottom', $half-spacing-unit);
+  text-align: center;
+  border-radius: 0;
+  box-shadow: 0 0.25em 0.25em -0.125em tint($gray, 50%);
+
+  img {
+    max-height: $base-spacing-unit * 4;
+  }
+}

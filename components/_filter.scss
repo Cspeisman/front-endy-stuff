@@ -1,0 +1,94 @@
+// ------------------------------
+// Product Filter
+// ------------------------------
+
+.product-filter {
+  @include rem('margin-top', -$base-spacing-unit);
+  @include rem('margin-bottom', $base-spacing-unit);
+  @include rem('margin-left', -$base-spacing-unit);
+  @include rem('margin-right', -$base-spacing-unit);
+  border-bottom: 1px solid tint($gray, 50%);
+  border-color: rgba($gray, 0.5);
+  background-color: tint($blue, 98%);
+
+  @include media-query(palm) {
+    margin-top: 0;
+  }
+}
+.product-filter-heading {
+  @include rem('margin-bottom', $half-spacing-unit);
+  @include rem('padding-top', $base-spacing-unit);
+  @include rem('padding-bottom', $half-spacing-unit);
+  @include rem('padding-left', $base-spacing-unit);
+  @include rem('padding-right', $base-spacing-unit);
+  border-bottom: 1px solid tint($gray, 75%);
+  border-color: rgba($gray, 0.25);
+  background-color: tint($blue, 93%);
+
+  &:before {
+    vertical-align: middle;
+    margin-right: 0.25em;
+    color: $blue;
+  }
+}
+.product-filter-form {
+  position: relative;
+  @include rem('margin-bottom', $base-spacing-unit);
+  @include rem('margin-left', $base-spacing-unit);
+  @include rem('margin-right', $base-spacing-unit);
+
+  fieldset {
+    @include rem('margin-bottom', $half-spacing-unit);
+    padding-top: 0;
+    @include rem('padding-bottom', $half-spacing-unit);
+    padding-left: 0;
+    padding-right: 0;
+    border: none;
+    border-bottom: 1px solid tint($gray, 75%);
+    border-color: rgba($gray, 0.25);
+  }
+  legend {
+    padding: 0;
+    background-color: transparent;
+  }
+}
+.product-filter-actions {
+
+  .button {
+    @include rem('margin-bottom', $half-spacing-unit);
+  }
+}
+.product-filter-reset {
+  text-decoration: none;
+  color: $red;
+
+  &:before {
+    margin-right: 0.25em;
+    vertical-align: middle;
+    color: $red;
+  }
+  &:visited {
+    color: $red;
+  }
+  &:hover {
+    color: shade($red, 25%);
+
+    &:before {
+      color: shade($red, 25%);
+    }
+  }
+}
+
+// Horizontal product filter
+.product-filter-horizontal {
+  position: relative;
+  z-index: 2; // makes sure the dropdowns appear on top of subsequent content
+  // @include rem('margin-bottom', $half-spacing-unit);
+  @include rem('padding', $half-spacing-unit $base-spacing-unit);
+  background-color: tint($gray, 50%);
+}
+.horizontal-filter-heading {
+  @include rem('line-height', $base-spacing-unit*1.666);
+  font-weight: 600;
+  color: shade($gray, 25%);
+}

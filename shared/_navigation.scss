@@ -1,0 +1,113 @@
+// ------------------------------
+// Navigation
+// ------------------------------
+
+// Example
+/*
+  <ul class="nav  nav-horizontal">
+    <li><a href="">Link 1</a></li>
+    <li><a href="">Link 2</a></li>
+    <li><a href="">Link 3</a></li>
+  </ul>
+*/
+
+
+
+// Base navigation structure
+.nav {
+  margin: 0;
+  list-style: none;
+  @extend .cf;
+
+  a {
+    display: block;
+  }
+}
+
+// Stack the nav list left-to-right
+.nav-horizontal {
+
+  > li {
+    float: left;
+  }
+}
+
+// Stack the nav list top-to-bottom
+.nav-vertical {
+
+  > li {
+    float: none;
+  }
+}
+
+// Add padding to the nav list links
+.nav-block {
+  line-height: 1;
+
+  > li {
+    letter-spacing: normal;
+    word-spacing: normal;
+
+    > a {
+      padding: $half-spacing-unit;
+    }
+  }
+}
+
+
+
+// ------------------------------
+// Categories
+// ------------------------------
+// note: Good for styling sidebar category lists
+
+// Navigation for categories and filters
+.categories {
+  margin-bottom: $base-spacing-unit;
+  padding-bottom: $base-spacing-unit;
+}
+
+.categories a {
+  padding: $half-spacing-unit;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.categories-breadcrumbs a {
+  border-bottom: 1px solid tint($gray, 50%);
+  background-color: tint($gray, 85%);
+  color: tint($text-color, 50%);
+
+  &:hover {
+    background-color: tint($gray, 75%);
+  }
+  &[class*="ss-"]:before {
+    font-size: 0.5em;
+    margin-right: 0.5em;
+  }
+}
+
+.categories-list a {
+  border-bottom: 1px solid tint($gray, 50%);
+  color: $text-color;
+  background-color: white;
+
+  &:hover {
+    background-color: tint($gray, 65%);
+  }
+  &[class*="ss-"]:before {
+    font-size: 0.5em;
+    margin-right: 0.5em;
+    color: $blue;
+  }
+}
+
+.current-category a {
+  border-bottom-color: shade($blue, 15%);
+  background-color: $blue;
+  color: white;
+
+  &:hover {
+    background-color: shade($blue, 10%);
+  }
+}

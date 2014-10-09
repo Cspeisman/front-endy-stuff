@@ -1,0 +1,46 @@
+// ------------------------------
+// Breadcrumbs
+// ------------------------------
+
+// Base breadcrumbs structure
+.breadcrumbs {
+  margin: 0;
+  list-style: none;
+  @extend .cf;
+
+  > li {
+
+    &,
+    > a {
+      display: inline-block;
+     *display: inline;
+      zoom: 1;
+    }
+  }
+}
+
+// Global breadcrumbs
+.site-breadcrumbs {
+  @include rem('margin-top', -$base-spacing-unit*0.25);
+  @include rem('margin-bottom', $base-spacing-unit*0.75);
+  color: white;
+
+  a {
+    text-decoration: none;
+    color: white;
+
+    &:visited {
+      color: white;
+    }
+    &:hover {
+      color: tint($blue, 50%);
+    }
+  }
+
+  [class*="ss-"]:before {
+    vertical-align: middle;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    color: tint($blue, 25%);
+  }
+}

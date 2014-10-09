@@ -1,0 +1,59 @@
+// ------------------------------
+// Tab Styles
+// ------------------------------
+
+// These are only styles for tabs display.
+// Can be used with the _toggle.js module to hide/show tabs.
+
+// Example HTML markup:
+/*
+  // Tabs components
+  <ul class="tabs">
+    <li><a href="" class="tab">Tab 1</a></li>
+    <li><a href="" class="tab">Tab 2</a></li>
+    <li><a href="" class="tab">Tab 3</a></li>
+  </ul>
+*/
+
+.tabs {
+  margin-left: 0;
+  list-style: none;
+  border-bottom: 1px solid $gray;
+  @include clearfix;
+}
+.tab {
+  display: block;
+  float: left;
+  margin-bottom: -1px;
+  @include rem('margin-left', $base-spacing-unit/4);
+  @include rem('margin-right', $base-spacing-unit/4);
+  @include rem('padding', $half-spacing-unit $base-spacing-unit);
+  border-top: 1px solid $gray;
+  border-left: 1px solid $gray;
+  border-right: 1px solid $gray;
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+  outline: none !important;
+  background-color: tint($gray, 50%);
+  color: shade($gray, 25%);
+  font-weight: 600;
+  text-decoration: none;
+
+  &:visited {
+    color: shade($gray, 25%);
+  }
+  &:hover {
+    background-color: tint($gray, 25%);
+    color: $text-color;
+  }
+  @include media-query(palm) {
+    margin-left: 0;
+    @include rem('margin-right', $base-spacing-unit/6);
+    @include rem('padding', $half-spacing-unit);
+  }
+}
+.tab.active {
+  background-color: white;
+  border-bottom: 1px solid white;
+  color: $text-color;
+}

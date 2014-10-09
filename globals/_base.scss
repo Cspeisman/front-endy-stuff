@@ -1,0 +1,102 @@
+// ------------------------------
+// Global
+// ------------------------------
+
+// Box model
+* {
+  @include box-sizing(border-box);
+}
+// Box-sizing fix for IE7
+// https://github.com/Schepp/box-sizing-polyfill
+.lt-ie8 * {
+  box-sizing: border-box; *behavior: javascript-url('boxsizing.htc');
+}
+
+// Document default styles
+html {
+  background-color: tint($beige, 75%);
+  font-family: $base-font-family;
+  font-size: ($base-font-size/16px)*1em;
+  line-height: $line-height-ratio;
+  color: $text-color;
+  overflow-y: scroll;
+  min-height: 100%;
+}
+
+// Default link styles
+a {
+  color: $blue;
+
+  &:visited {
+    // color: scale-color($blue, $red: 50%);
+  }
+  &:hover {
+    color: shade($blue, 50%);
+  }
+}
+
+// Text sizing helpers
+small {
+  font-size: 75%;
+}
+
+// Horizontal rules (thematic breaks)
+hr {
+  color: tint($gray, 25%);
+  color: rgba($gray, 0.75);
+  border: none;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  margin-bottom: $base-spacing-unit - 1px;
+  margin-bottom: (($base-spacing-unit - 1px) / $base-font-size) * 1rem;
+}
+
+// Browser video players
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+// ------------------------------
+// Vertical Rythym
+// ------------------------------
+
+// Base elements
+h1, h2, h3, h4, h5, h6,
+ul, ol, dl,
+blockquote, p, address,
+table,
+fieldset, figure,
+pre, video, .flex-video,
+// Abstractions
+%base-margin-bottom,
+// UI elements
+.card,
+.alert {
+  margin-bottom: $base-spacing-unit;
+  margin-bottom: ($base-spacing-unit / $base-font-size) * 1rem;
+}
+hr {
+  margin-bottom: $base-spacing-unit - 2px;
+  margin-bottom: (($base-spacing-unit - 2px) / $base-font-size) * 1rem;
+}
+ul, ol, dd {
+  margin-left: 2 * $base-spacing-unit;
+  margin-left: (2 * $base-spacing-unit / $base-font-size) * 1rem;
+}
+
+// Alternate vertical rythym for long form
+.article-body {
+
+  h1, h2, h3, h4, h5, h6,
+  ul, ol, dl,
+  blockquote, p, address,
+  table,
+  fieldset, figure,
+  pre {
+    margin-bottom: $long-base-unit;
+    margin-bottom: ($long-base-unit / $base-font-size)*1rem;
+  }
+}

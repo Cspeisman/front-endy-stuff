@@ -1,0 +1,101 @@
+// ------------------------------
+// Cards
+// ------------------------------
+
+// Cards are used to wrap a section of content.
+// They are typically used to visually distinguish between containers.
+
+// Base card structure
+.card {
+  @include rem('padding', $base-spacing-unit);
+  border-radius: $radius;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+.card-thin {
+  @include rem('padding', $half-spacing-unit);
+}
+.card-no-pad {
+  padding: 0;
+}
+
+// UI card accent styles
+.card {
+  background-color: white;
+  box-shadow: 0 0.1875em shade(white, 6%);
+}
+.card-interior {
+  @include card($gray, 85%, 65%, 50%);
+}
+.card-exterior {
+  @include card($beige, 50%, 25%, 50%);
+}
+
+// UI card utility styles
+.card-primary {
+  @include card($orange, 85%, 75%, 25%);
+}
+.card-secondary {
+  @include card($blue, 85%, 75%, 25%);
+}
+.card-positive {
+  @include card($green, 85%, 75%, 25%);
+}
+.card-negative {
+  @include card($red, 85%, 75%, 25%);
+}
+.card-info {
+  @include card($yellow, 85%, 65%, 75%);
+}
+
+// Basic title structure for a card.
+// Good for using above a list.
+.line-list-heading {
+  margin-bottom: 0 !important;
+  border-bottom: 2px solid $heading-color;
+  border-color: rgba($heading-color, 0.5);
+  text-transform: uppercase;
+}
+
+// Styling for link lists within cards
+.card-list {
+  @extend .nav;
+  list-style: none;
+  margin-left: 0;
+
+  li {
+    border-bottom: 1px solid $gray;
+    border-color: rgba(0, 0, 0, 0.10);
+
+    &:first-child {
+      border-top: 1px solid $gray;
+      border-color: rgba(0, 0, 0, 0.10);
+    }
+  }
+
+  a {
+    padding-top: $half-spacing-unit / 2;
+    padding-bottom: $half-spacing-unit / 2;
+    text-decoration: none;
+
+    &[class^="ss-"]:before {
+      float: right;
+      font-size: 0.625em;
+      line-height: 2.4em;
+      color: $gray;
+      color: rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+// For a "view more" type of link on the card
+.card-all-link {
+  display: inline-block;
+  text-align: right;
+  padding-top: $half-spacing-unit / 2;
+  padding-bottom: $half-spacing-unit / 2;
+  text-decoration: none;
+  font-weight: 700;
+}

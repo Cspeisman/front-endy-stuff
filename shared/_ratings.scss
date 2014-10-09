@@ -1,0 +1,36 @@
+// ------------------------------
+// Reviews
+// ------------------------------
+
+// Styles for stars and reviews links
+.reviews {
+  margin-bottom: $base-spacing-unit / 4;
+}
+.reviews-stars {
+  margin-right: $base-spacing-unit / 4;
+  vertical-align: middle;
+  text-decoration: none;
+  white-space: nowrap;
+
+  .ss-star {
+    display: inline-block;
+    position: relative;
+    color: tint($gray, 75%);
+    text-shadow: 0 1px 0 shade($gray, 25%);
+
+    .ss-star,
+    .ss-halfstar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      color: darken($yellow, 15%);
+      text-shadow: none;
+    }
+  }
+}
+.reviews-count {
+  text-decoration: none;
+  color: shade($gray, 25%);
+  white-space: nowrap;
+}

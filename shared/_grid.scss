@@ -1,0 +1,231 @@
+// ------------------------------
+// Grid
+// ------------------------------
+
+// Example
+/*
+  <div class="grid">
+    <div class="cell  one-third  lap-two-thirds  palm-one-whole"></div>
+    <div class="cell  one-third  palm-one-whole"></div>
+    <div class="cell  one-third  lap-one-whole"></div>
+  </div>
+*/
+
+
+
+// ------------------------------
+// Container
+// ------------------------------
+
+// Set max-width
+%container {
+  @include clearfix;
+  @include box-sizing(content-box);
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  @include rem('padding-left', $base-spacing-unit);
+  @include rem('padding-right', $base-spacing-unit);
+
+  @include media-query(palm) {
+    @include rem('padding-left', $base-spacing-unit*0.75);
+    @include rem('padding-right', $base-spacing-unit*0.75);
+  }
+}
+
+
+
+// ------------------------------
+// Rows
+// ------------------------------
+
+// Base setup for grid
+// note: Grids always wrap around cells
+.grid {
+  @include rem('margin-left', -$base-spacing-unit);
+  @include clearfix;
+
+  // note: .grid can be used on lists
+  list-style: none;
+  margin-bottom: 0;
+}
+
+// Reverse the grid
+// note: Use with .grid, e.g. <div class="grid  grid-reverse">
+// note: Useful for responsive alignment
+.grid-reverse > .cell {
+  float: right;
+}
+
+// Center the grid cell
+.grid-center > .cell {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Thin 1/2 grid gutters
+.grid-thin {
+  @include rem('margin-left', -$half-spacing-unit);
+}
+// Skinny 1/4 grid gutters
+.grid-skinny {
+  @include rem('margin-left', -$half-spacing-unit/2);
+}
+.grid-thick {
+  @include rem('margin-left', -$base-spacing-unit*1.5);
+}
+.grid-fat {
+  @include rem('margin-left', -$base-spacing-unit*2);
+}
+.palm-gutter-normal {
+
+  @include media-query(palm) {
+    @include rem('margin-left', -$base-spacing-unit);
+  }
+}
+// No gutter
+.grid-collapse {
+  margin-left: 0;
+}
+
+// Rows inside forms
+// Example:
+/*
+  <ul class="grid  grid-form-fields">
+    <li class="cell  one-whole">
+      <label></label>
+      <input class="text-input">
+    </li>
+  </ul>
+*/
+.grid-form-fields > li {
+  @extend %base-margin-bottom;
+}
+.grid-form-fields > li:last-child {
+  margin-bottom: 0;
+}
+
+
+
+// ------------------------------
+// Cells
+// ------------------------------
+
+// Base setup for grid cells
+// note: Columns always nest inside a grid
+.cell {
+  float: left;
+  @include rem('padding-left', $base-spacing-unit);
+}
+
+// Thin 1/2 grid gutters
+.grid-thin > .cell {
+  @include rem('padding-left', $half-spacing-unit);
+}
+// Skinny 1/4 grid gutters
+.grid-skinny > .cell {
+  @include rem('padding-left', $half-spacing-unit/2);
+}
+.grid-thick > .cell {
+  @include rem('padding-left', $base-spacing-unit*1.5);
+}
+.grid-fat > .cell {
+  @include rem('padding-left', $base-spacing-unit*2);
+}
+.palm-gutter-normal > .cell {
+
+  @include media-query(palm) {
+    @include rem('padding-left', $base-spacing-unit);
+  }
+}
+// No gutter
+.grid-collapse > .cell {
+  padding-left: 0;
+}
+
+// Grid cell widths
+@mixin grid-setup($namespace: "") {
+  // Whole
+  .#{$namespace}one-whole         { width: 100%; }
+
+  // Halves
+  .#{$namespace}one-half          { width: 50%; }
+
+  // Thirds
+  .#{$namespace}one-third         { width: 33.333%; }
+  .#{$namespace}two-thirds        { width: 66.666%; }
+
+  // Quarters
+  .#{$namespace}one-quarter       { width: 25%; }
+  .#{$namespace}two-quarters      { @extend .#{$namespace}one-half; }
+  .#{$namespace}three-quarters    { width: 75%; }
+
+  // Fifths
+  .#{$namespace}one-fifth         { width: 20%; }
+  .#{$namespace}two-fifths        { width: 40%; }
+  .#{$namespace}three-fifths      { width: 60%; }
+  .#{$namespace}four-fifths       { width: 80%; }
+
+  // Sixths
+  .#{$namespace}one-sixth         { width: 16.666%; }
+  .#{$namespace}two-sixths        { @extend .#{$namespace}one-third; }
+  .#{$namespace}three-sixths      { @extend .#{$namespace}one-half; }
+  .#{$namespace}four-sixths       { @extend .#{$namespace}two-thirds; }
+  .#{$namespace}five-sixths       { width: 83.333%; }
+
+  // Eighths
+  .#{$namespace}one-eighth        { width: 12.5%; }
+  .#{$namespace}two-eighths       { @extend .#{$namespace}one-quarter; }
+  .#{$namespace}three-eighths     { width: 37.5%; }
+  .#{$namespace}four-eighths      { @extend .#{$namespace}one-half; }
+  .#{$namespace}five-eighths      { width: 62.5%; }
+  .#{$namespace}six-eighths       { @extend .#{$namespace}three-quarters; }
+  .#{$namespace}seven-eighths     { width: 87.5%; }
+
+  // Tenths
+  .#{$namespace}one-tenth         { width: 10%; }
+  .#{$namespace}two-tenths        { @extend .#{$namespace}one-fifth; }
+  .#{$namespace}three-tenths      { width: 30%; }
+  .#{$namespace}four-tenths       { @extend .#{$namespace}two-fifths; }
+  .#{$namespace}five-tenths       { @extend .#{$namespace}one-half; }
+  .#{$namespace}six-tenths        { @extend .#{$namespace}three-fifths; }
+  .#{$namespace}seven-tenths      { width: 70%; }
+  .#{$namespace}eight-tenths      { @extend .#{$namespace}four-fifths; }
+  .#{$namespace}nine-tenths       { width: 90%; }
+
+  // Twelfths
+  .#{$namespace}one-twelfth       { width: 8.333%; }
+  .#{$namespace}two-twelfths      { @extend .#{$namespace}one-sixth; }
+  .#{$namespace}three-twelfths    { @extend .#{$namespace}one-quarter; }
+  .#{$namespace}four-twelfths     { @extend .#{$namespace}one-third; }
+  .#{$namespace}five-twelfths     { width: 41.666% }
+  .#{$namespace}six-twelfths      { @extend .#{$namespace}one-half; }
+  .#{$namespace}seven-twelfths    { width: 58.333%; }
+  .#{$namespace}eight-twelfths    { @extend .#{$namespace}two-thirds; }
+  .#{$namespace}nine-twelfths     { @extend .#{$namespace}three-quarters; }
+  .#{$namespace}ten-twelfths      { @extend .#{$namespace}five-sixths; }
+  .#{$namespace}eleven-twelfths   { width: 91.666%; }
+}
+
+@include grid-setup();
+
+
+
+// ------------------------------
+// Breakpoints
+// ------------------------------
+
+// Media queries for various breakpoints
+@include media-query(palm) {
+  @include grid-setup("palm-");
+}
+@include media-query(lap) {
+  @include grid-setup("lap-");
+}
+@include media-query(portable) {
+  @include grid-setup("portable-");
+}
+@include media-query(desk) {
+  @include grid-setup("desk-");
+}

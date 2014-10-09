@@ -1,0 +1,106 @@
+// ------------------------------
+// Dropdowns
+// ------------------------------
+
+// Base style for dropdowns
+// e.g. Used for the horizontal filter options
+
+/* Example usage:
+  <div class="dropdown  dropdown-fixed">
+    <div class="dropdown-trigger  ss-dropdown">Dropdown Title</div>
+    <div class="dropdown-panel">
+      // dropdown content goes here
+    </div>
+  </div>
+*/
+.dropdown {
+  position: relative;
+  z-index: 1;
+
+  &.js-selected .dropdown-trigger {
+    border-color: tint($green, 50%);
+  }
+  @include media-query(palm) {
+    @include rem('margin-bottom', $half-spacing-unit);
+  }
+}
+.dropdown-trigger {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  @include rem('padding-left', $half-spacing-unit);
+  @include rem('padding-right', $half-spacing-unit);
+  @include rem('line-height', $base-spacing-unit*1.666);
+  border-radius: $radius;
+  border: 1px solid tint($gray, 25%);
+  background-color: tint($gray, 90%);
+  @extend .milli;
+  @include user-select(none);
+
+  &:before {
+    float: right;
+    color: tint($gray, 0%);
+    font-size: .8em;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: tint($gray, 80%);
+  }
+  &.js-active {
+    border-top-color: tint($green, 50%);
+    border-bottom-color: tint($gray, 25%) !important;
+    border-left-color: tint($green, 50%);
+    border-right-color: tint($green, 50%);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &:before {
+      color: shade($gray, 25%);
+    }
+  }
+}
+.dropdown-panel {
+  display: none;
+  @include rem('padding', $half-spacing-unit);
+  border-bottom: 1px solid tint($green, 50%);
+  border-left: 1px solid tint($green, 50%);
+  border-right: 1px solid tint($green, 50%);
+  border-bottom-left-radius: $radius;
+  border-bottom-right-radius: $radius;
+  background-color: white;
+
+  .form-option-list > li {
+    margin-bottom: .25em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+    :hover {
+      color: $blue;
+    }
+  }
+}
+
+// Append .dropdown-fixed to .dropdown if you want the
+// dropdown panels to appear on top of subsequent content.
+.dropdown-fixed {
+
+  .dropdown-panel {
+    position: absolute;
+    top: 100%;
+    min-width: 100%;
+    box-shadow: 0 0.25em 0.25em rgba(shade($gray, 50%), 0.1);
+
+    @include media-query(palm) {
+      position: static;
+      box-shadow: none;
+    }
+  }
+}
+
+// Special style for appending a counter or option to the
+// end of a filter title (e.g. used to indicate how many
+// features have been selected).
+.filter-selected-meta {
+  color: $green;
+}

@@ -1,0 +1,105 @@
+// ------------------------------
+// Buttons
+// ------------------------------
+
+// Example
+/*
+  <a href="#" class="button  button-secondary">Click Here</a>
+  <a href="#" class="button">Or Click Here</a>
+  <button class="button  button-primary">Submit</button>
+*/
+
+
+
+// Base button style
+.button {
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 1;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-right: 1em;
+  padding-left: 1em;
+  border-radius: $radius;
+
+  &[class*="ss-"]:before,
+  &[class^="ss-"]:before {
+    margin-right: 0.5em;
+    vertical-align: middle;
+  }
+}
+
+// Button sizes
+.button-full {
+  display: block;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+.button-tiny {
+  font-size: $micro-size;
+  font-size: ($micro-size / $base-font-size)*1rem;
+}
+.button-small {
+  font-size: $milli-size;
+  font-size: ($milli-size / $base-font-size)*1rem;
+}
+.button-large {
+  font-size: $h5-size;
+  font-size: ($h5-size / $base-font-size)*1rem;
+}
+.button-huge {
+  font-size: $h4-size;
+  font-size: ($h4-size / $base-font-size)*1rem;
+}
+
+// UI button styles
+.button-primary {
+  @include button($orange);
+}
+.button-secondary {
+  @include button($blue);
+}
+.button-tertiary {
+  @include button(lighten($blue, 20%));
+}
+.button-positive {
+  @include button($green);
+}
+.button-negative {
+  @include button($red);
+}
+.button-interior {
+  @include button(darken($gray, 25%));
+}
+.button-exterior {
+  @include button(darken($beige, 25%));
+}
+.button-inactive {
+  background: none;
+  background-image: none;
+  background-color: $gray !important;
+  border: 1px solid shade($gray, 5%) !important;
+  color: shade($gray, 25%) !important;
+  text-shadow: 1px 1px tint($gray, 50%) !important;
+
+  &:hover,
+  &:focus {
+    background: none;
+    background-image: none;
+    background-color: $gray !important;
+    color: shade($gray, 25%) !important;
+    cursor: default !important;
+  }
+}

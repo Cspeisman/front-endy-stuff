@@ -1,0 +1,131 @@
+// ------------------------------
+// Quotes
+// ------------------------------
+
+// Example
+/*
+  <p>Aenean lacinia <q>bibendum nulla</q> sed consectetur.</p>
+
+  <blockquote>
+    <p>Insanity is doing the same thing over and over again and expecting different results.</p>
+    <b class="source">Albert Einstein</b>
+  </blockquote>
+*/
+
+
+
+// Add proper quote symbols to quotes
+$open-quote:            “;
+$close-quote:           ”;
+
+// Inline quotes
+q {
+  quotes: "‘" "’" "#{$open-quote}" "#{$close-quote}";
+
+  &:before{
+    content: "‘";
+    content: open-quote;
+  }
+  &:after{
+    content: "’";
+    content: close-quote;
+  }
+  q:before{
+    content: "“";
+    content: open-quote;
+  }
+  q:after{
+    content: "”";
+    content: close-quote;
+  }
+}
+blockquote {
+  font-family: $long-font-family;
+  font-style: italic;
+
+  p:last-of-type {
+    margin-bottom: $half-spacing-unit;
+  }
+}
+.source {
+  display: block;
+  font-family: $base-font-family;
+  font-style: normal;
+  text-indent: 0;
+
+  &:before {
+    content: "— ";
+  }
+}
+.blockquote-title {
+  color: shade($gray, 25%);
+  font-style: normal;
+}
+
+
+
+// Blockquote bubbles
+// --------------------------------
+
+/*
+<blockquote>
+  <div class="bubble"></div>
+  <div class="source"></div>
+</blockquote>
+*/
+
+.bubble {
+  @include box-sizing(content-box);
+  position: relative;
+  @include rem('margin-bottom', $base-spacing-unit);
+  @include rem('padding', $base-spacing-unit);
+  border-radius: $radius;
+  background-color: white;
+  border: 1px solid tint($gray, 50%);
+  border-color: rgba($gray, 0.5);
+
+  &:before {
+    content: "";
+    @include position(absolute, 100% 0 0 23px);
+    margin-top: 1px;
+    @include triangle(26px, tint($gray, 50%), down);
+    border-top-color: rgba($gray, 0.5);
+
+  }
+  &:after {
+    content: "";
+    @include position(absolute, 100% 0 0 24px);
+    @include triangle(24px, white, down);
+  }
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+.bubble-source {
+  @include clearfix;
+  display: block;
+  font-family: $base-font-family;
+  font-style: normal;
+  color: tint($text-color, 25%);
+  color: rgba($text-color, 0.75);
+}
+.bubble-logo,
+.bubble-thumbnail {
+  float: left;
+  @include rem('width', $base-spacing-unit*3.5);
+  @include rem('margin-right', $half-spacing-unit);
+  @include rem('padding-right', $half-spacing-unit);
+  border-right: 1px dotted rgba(black, 0.25);
+
+  img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+.bubble-logo-fade {
+  opacity: 0.35;
+}
+.bubble-source-name {
+  float: left;
+  @include rem('padding-top', $base-spacing-unit/3);
+}
